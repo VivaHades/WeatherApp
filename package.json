@@ -2,6 +2,7 @@
   "name": "weather_app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vivahades.github.io/WeatherApp/",
   "dependencies": {
     "@react-google-maps/api": "^2.12.0",
     "@testing-library/jest-dom": "^5.16.4",
@@ -47,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^4.0.0",
     "sass": "^1.53.0"
   }
 }
