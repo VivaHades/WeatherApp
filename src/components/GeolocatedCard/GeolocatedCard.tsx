@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react"
 import { useTranslation } from "react-i18next"
+import { Area, AreaChart, XAxis, YAxis } from "recharts"
 
 import styles from "./GeolocatedCard.module.scss"
 
-import { API_KEY, API_URL } from "../../Global"
-
-import langStore from "../../store/LangStore"
+import { API_KEY, API_URL } from "../../global_vars"
 
 import IChartData from "../../interfaces/chartData"
 
-import { Area, AreaChart, XAxis, YAxis } from "recharts"
+import langStore from "../../store/LangStore"
+
 import ErrorPopup from "../ErrorPopup/ErrorPopup"
 import { Loader } from "../Loader/Loader"
 
@@ -33,7 +33,6 @@ export const GeolocatedCard = () => {
     setLoading(true)
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log(position)
         setCoords({
           lat: position.coords.latitude,
           lon: position.coords.longitude,
@@ -90,7 +89,15 @@ export const GeolocatedCard = () => {
     }
   }, [weatherForecast, isCelsius])
 
-  if (error) return <ErrorPopup errorMessage={error} />
+  if (error)
+    return (
+      <div className={styles.errorWrapper}>
+        <button className={styles.geolocationButton} onClick={geolocate}>
+          {t("geolocationButton")}
+        </button>
+        <ErrorPopup errorMessage={error} />
+      </div>
+    )
 
   if (loading) return <Loader />
 

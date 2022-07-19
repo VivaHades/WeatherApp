@@ -1,12 +1,14 @@
 import React from "react"
-import "./App.scss"
-import "./global.scss"
-
-import { useJsApiLoader } from "@react-google-maps/api"
-import { MAPS_KEY } from "./Global.js"
 import i18n from "i18next"
 import { initReactI18next, useTranslation } from "react-i18next"
-import lang from "./store/LangStore"
+import { useJsApiLoader } from "@react-google-maps/api"
+
+import styles from "./App.module.scss"
+import "./global.scss"
+
+import { MAPS_KEY } from "./global_vars.js"
+
+import langStore from "./store/LangStore"
 
 import { CardTable } from "./components/CardTable/CardTable"
 import { Search } from "./components/Search/Search"
@@ -23,33 +25,36 @@ i18n.use(initReactI18next).init({
     ua: { translation: UkrainianTranslation },
     ru: { translation: RussianTranslation },
   },
-  lng: lang.lang,
+  lng: langStore.lang,
   fallbackLng: "en",
   interpolation: { escapeValue: false },
 })
 
 function App() {
-  const { t } = useTranslation()
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: MAPS_KEY,
     libraries: ["places"],
   })
 
+  const { t } = useTranslation()
+
   if (!isLoaded) {
     return (
-      <div className="mainContainer container col">
-        <Loader />
+      <div className={styles.App}>
+        <div className="mainContainer container col">
+          <Loader />
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="App">
-      <div className="mainContainer container col">
-        <div className="selectWrapper container padding">
+    <div className={styles.App}>
+      <div className={`${styles.mainContainer} container col`}>
+        <div className={`${styles.selectWrapper} container padding`}>
           <LanguageSelect />
         </div>
-        <h1 className="appHeader">{t("heading")}</h1>
+        <h1>{t("heading")}</h1>
         <GeolocatedCard />
         <Search />
         <CardTable />

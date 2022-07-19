@@ -1,8 +1,10 @@
 import React from "react"
-import styles from "./LanguageSelect.module.scss"
-import langStore from "../../store/LangStore"
 import { observer } from "mobx-react-lite"
 import i18n from "i18next"
+
+import styles from "./LanguageSelect.module.scss"
+
+import langStore from "../../store/LangStore"
 
 export const LanguageSelect = observer(() => {
   return (

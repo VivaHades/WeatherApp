@@ -9,12 +9,12 @@ import citiesStore from "../../store/CityStore"
 
 export const Search = () => {
   const autocompleteRef = useRef<HTMLInputElement | null>(null)
-  const [inputValue, setInputValue] = useState("")
+  const [inputValue, setInputValue] = useState<string>("")
 
   const { t } = useTranslation()
 
-  const handleChange = (e: any) => {
-    setInputValue(e.target.value)
+  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setInputValue(e.currentTarget.value)
   }
 
   return (

@@ -69,7 +69,12 @@
 .selected {
   color: rgb(68, 68, 68)
 }
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+}
 .geolocationButton {
+  align-self: center;
   border:none;
   background-color: rgb(87, 158, 224);
   border-radius: 5px;

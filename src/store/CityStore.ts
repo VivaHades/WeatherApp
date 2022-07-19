@@ -1,4 +1,5 @@
 import { makeAutoObservable } from "mobx"
+
 import ICity from "../interfaces/city"
 
 class Cities {
@@ -18,10 +19,12 @@ class Cities {
     this.cities = this.cities.filter((c) => c.id !== city.id)
     localStorage.setItem("cities", JSON.stringify(this.cities))
   }
+
   celsiusToFahrengheit(city: ICity) {
     city.isCelsius = false
     localStorage.setItem("cities", JSON.stringify(this.cities))
   }
+
   fahrengheitToCelsius(city: ICity) {
     city.isCelsius = true
     localStorage.setItem("cities", JSON.stringify(this.cities))

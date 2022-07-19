@@ -1,32 +1,34 @@
 import React, { useEffect, useState } from "react"
 import { observer } from "mobx-react-lite"
 import { useTranslation } from "react-i18next"
+import { AreaChart, XAxis, YAxis, Area } from "recharts"
 
 import styles from "./Card.module.scss"
 
-import { API_KEY, API_URL } from "../../Global"
-
-import citiesStore from "../../store/CityStore"
-import langStore from "../../store/LangStore"
+import { API_KEY, API_URL } from "../../global_vars"
 
 import IChartData from "../../interfaces/chartData"
 import ICity from "../../interfaces/city"
 
-import { AreaChart, XAxis, YAxis, Area } from "recharts"
+import citiesStore from "../../store/CityStore"
+import langStore from "../../store/LangStore"
+
 import ErrorPopup from "../ErrorPopup/ErrorPopup"
 import { Loader } from "../Loader/Loader"
 
-interface ICard {
+interface ICardProps {
   city: ICity
 }
 
-export const Card = observer((props: ICard) => {
+export const Card = observer((props: ICardProps) => {
   const { city } = props
+
   const [weather, setWeather] = useState<any>(null)
   const [weatherForecast, setWeatherForecast] = useState<any>(null)
   const [chartData, setChartData] = useState<IChartData[]>([])
   const [errorMessage, setErrorMessage] = useState<string>("")
   const [loading, setLoading] = useState<boolean>(false)
+
   const { t } = useTranslation()
 
   /* fetching weather data */
