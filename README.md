@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-The purpose of this project is to perform a [test task](https://docs.google.com/document/d/1fXrQ7w0FncL-zPCUMdJR5tXVAmM-oYkJFUB_-xBDlO8/edit).
+The purpose of this project is to perform a [test task](https://docs.google.com/document/d/1VT4ZhgYcbY30OgSXFiQly2-GMQJvQnl3umQIdMHXWk8/edit).
 
 ## Available Scripts
 
